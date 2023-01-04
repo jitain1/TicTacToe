@@ -62,23 +62,33 @@ public class TicTacToe {
 		}
 	}
 	static void computerInput(){
-		int computerMove = (int) (Math.random() * 9 + 1);
-		if(board[computerMove] == ' '){
-			board[computerMove] = computerSymbol;
-		}else{
-			System.out.println("Its not Empty");
-			computerInput();
-		}
-		if(checkWinner(computerSymbol)){
-			System.out.println("Computer wins.");
-
-		}else{
-			checkDraw(computerSymbol);
+		if(canWin()) {
+			System.out.println("****Computer can win now*****");
+			canWin();
 			showBoard();
-			System.out.println("Player chance: ");
-			userInput();
+			System.out.println("Computer wins.");
+			System.exit(0);
+		}else {
+			int computerMove = (int) (Math.random() * 9 + 1);
+			if(board[computerMove] == ' '){
+				board[computerMove] = computerSymbol;
+			}else{
+				System.out.println("Its not Empty");
+				computerInput();
+			}
+			if(checkWinner(computerSymbol)){
+				System.out.println("Computer wins.");
+
+			}else{
+				checkDraw(computerSymbol);
+				showBoard();
+				System.out.println("Player chance: ");
+				userInput();
+			}
 		}
 	}
+
+
 	static boolean checkWinner(char symbol) {
 		if ((board[1] == symbol && board[2] == symbol && board[3] == symbol) ||
 				(board[1] == symbol && board[4] == symbol && board[7] == symbol) ||
@@ -105,6 +115,84 @@ public class TicTacToe {
 			System.exit(0);
 		}
 	}
+
+	static boolean canWin() {
+		if (board[1] == computerSymbol && board[2] == computerSymbol && board[3] == ' ') {
+			board[3] = computerSymbol;
+			return true;
+		} else if (board[1] == computerSymbol && board[3] == computerSymbol && board[2] == ' ') {
+			board[2] = computerSymbol;
+			return true;
+		}else if (board[2] == computerSymbol && board[3] == computerSymbol && board[1] == ' ') {
+			board[1] = computerSymbol;
+			return true;
+		} else if (board[4] == computerSymbol && board[5] == computerSymbol && board[6] == ' ') {
+			board[6] = computerSymbol;
+			return true;
+		}else if (board[4] == computerSymbol && board[6] == computerSymbol && board[5] == ' ') {
+			board[5] = computerSymbol;
+			return true;
+		} else if (board[6] == computerSymbol && board[5] == computerSymbol && board[4] == ' ') {
+			board[4] = computerSymbol;
+			return true;
+		} else if (board[7] == computerSymbol && board[8] == computerSymbol && board[9] == ' ') {
+			board[9] = computerSymbol;
+			return true;
+		} else if (board[7] == computerSymbol && board[9] == computerSymbol && board[8] == ' ') {
+			board[8] = computerSymbol;
+			return true;
+		} else if (board[9] == computerSymbol && board[8] == computerSymbol && board[7] == ' ') {
+			board[7] = computerSymbol;
+			return true;
+		} else if (board[1] == computerSymbol && board[4] == computerSymbol && board[7] == ' ') {
+			board[7] = computerSymbol;
+			return true;
+		} else if (board[1] == computerSymbol && board[7] == computerSymbol && board[4] == ' ') {
+			board[4] = computerSymbol;
+			return true;
+		} else if (board[7] == computerSymbol && board[4] == computerSymbol && board[1] == ' ') {
+			board[1] = computerSymbol;
+			return true;
+		} else if (board[2] == computerSymbol && board[5] == computerSymbol && board[8] == ' ') {
+			board[8] = computerSymbol;
+			return true;
+		} else if (board[2] == computerSymbol && board[8] == computerSymbol && board[5] == ' ') {
+			board[5] = computerSymbol;
+			return true;
+		} else if (board[5] == computerSymbol && board[8] == computerSymbol && board[2] == ' ') {
+			board[2] = computerSymbol;
+			return true;
+		} else if (board[3] == computerSymbol && board[6] == computerSymbol && board[9] == ' ') {
+			board[9] = computerSymbol;
+			return true;
+		} else if (board[3] == computerSymbol && board[9] == computerSymbol && board[6] == ' ') {
+			board[6] = computerSymbol;
+			return true;
+		} else if (board[6] == computerSymbol && board[9] == computerSymbol && board[3] == ' ') {
+			board[3] = computerSymbol;
+			return true;
+		} else if (board[1] == computerSymbol && board[5] == computerSymbol && board[9] == ' ') {
+			board[9] = computerSymbol;
+			return true;
+		}else if (board[1] == computerSymbol && board[9] == computerSymbol && board[5] == ' ') {
+			board[5] = computerSymbol;
+			return true;
+		} else if (board[5] == computerSymbol && board[9] == computerSymbol && board[1] == ' ') {
+			board[1] = computerSymbol;
+			return true;
+		} else if (board[3] == computerSymbol && board[5] == computerSymbol && board[7] == ' ') {
+			board[7] = computerSymbol;
+			return true;
+		} else if (board[3] == computerSymbol && board[7] == computerSymbol && board[5] == ' ') {
+			board[5] = computerSymbol;
+			return true;
+		} else if (board[7] == computerSymbol && board[5] == computerSymbol && board[3] == ' ') {
+			board[3] = computerSymbol;
+			return true;
+		}
+		return false;
+	}
+
 
 	static void firstToStartGame() {
 		int toss = (int) (Math.random() * 10) % 2;
