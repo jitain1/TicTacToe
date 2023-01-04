@@ -49,6 +49,7 @@ public class TicTacToe {
         }
         else if(board[user] == ' '){
             board[user] = playerSymbol;
+            showBoard();
         }else{
             System.out.println("Its not Empty");
             userInput();
