@@ -39,11 +39,28 @@ public class TicTacToe {
         System.out.println("********************************************");
     }
 	
+    static void userInput(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Choose the position b/w (1 to 9): ");
+        int user = sc.nextInt();
+        if(user > 9 || user < 1){
+            System.out.println("Invalid input: ");
+            userInput();
+        }
+        else if(board[user] == ' '){
+            board[user] = playerSymbol;
+        }else{
+            System.out.println("Its not Empty");
+            userInput();
+        }
+        
+    }
 	
 	public static void main(String[] args) {
 		createBoard();
 		assignSymbol();
 		showBoard();
+		userInput();
 	}
 
 }
